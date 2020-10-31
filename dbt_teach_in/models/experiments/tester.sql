@@ -9,8 +9,8 @@
         ],
     )
 }}
---             "drop table if exists {{ this.schema }}.{{ this.name }}_fruit_only",
---             "create table {{ this.schema }}.{{ this.name}}_fruit_only as (select * from {{ this }} where item_type = 'Fruits')",
+{# -- "drop table if exists {{ this.schema }}.{{ this.name }}_fruit_only", #}
+{# -- "create table {{ this.schema }}.{{ this.name}}_fruit_only as (select * from {{ this }} where item_type = 'Fruits')", #}
 
 with dim_orders__dashboard as (
 
