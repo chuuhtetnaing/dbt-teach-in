@@ -2,7 +2,7 @@
     config({
         "materialized" : "table",
         "pre-hook": [
-            "create extension if not exists tablefunc {{ var("colon") }} ",
+            "create extension if not exists tablefunc ",
         ],
         "tags": [
             "distances",

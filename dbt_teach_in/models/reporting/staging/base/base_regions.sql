@@ -7,7 +7,7 @@
 
 with regions as (
 
-    select * from {{ ref('regions') }}
+    select * from {{ ref('raw_regions') }}
 
 )
 

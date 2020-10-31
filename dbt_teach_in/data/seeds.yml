@@ -4,7 +4,7 @@ version: 2
 ## The actual seeds... ##
 ##########################
 seeds:
-  - name: orders
+  - name: raw_orders
     description: >
       The order table of all products across all countries
 
@@ -14,11 +14,11 @@ seeds:
         tests:
           - unique
 
-  - name: countries
-  - name: item_types
-  - name: regions
+  - name: raw_countries
+  - name: raw_item_types
+  - name: raw_regions
 
-  - name: orders_snapshot_backup
+  - name: raw_orders_snapshot_backup
     description: |
       A valid mock up of the Snapshot table that would be
       created by running `dbt snapshots`.

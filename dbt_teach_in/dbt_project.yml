@@ -83,10 +83,9 @@ sources:
 seeds:
   dbt_teach_in:
     +schema: seeds
-    +tags: ["seeds"]
     quote_columns: true
 
-    orders:
+    raw_orders:
       +enabled: true
       # Override column types
       +column_types:
@@ -96,5 +95,5 @@ seeds:
     snapshots:
       +schema: snapshots
 
-      orders_snapshot_backup:
-        +enabled: true
+      raw_orders_snapshot_backup:
+        +enabled: false
