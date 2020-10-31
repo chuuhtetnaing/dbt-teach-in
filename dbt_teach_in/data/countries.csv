@@ -1,0 +1,186 @@
+id,country,has_online_sale_channel,has_offline_sale_channel,region_id,created_at,updated_at
+1,Israel,true,true,5,2010-01-01,2010-01-01
+2,Lebanon,true,true,5,2010-01-01,2010-01-01
+3,Sierra Leone,true,true,7,2010-01-01,2010-01-01
+4,Liechtenstein,true,true,4,2010-01-01,2010-01-01
+5,Hungary,true,true,4,2010-01-01,2010-01-01
+6,Mali,true,true,7,2010-01-02,2010-01-02
+7,Dominican Republic,true,true,3,2010-01-02,2010-01-02
+8,Lesotho,true,true,7,2010-01-02,2010-01-02
+9,Benin,true,true,7,2010-01-03,2010-01-03
+10,Malaysia,true,true,1,2010-01-03,2010-01-03
+11,Armenia,true,true,4,2010-01-03,2010-01-03
+12,Brunei,true,true,1,2010-01-03,2010-01-03
+13,El Salvador,true,true,3,2010-01-03,2010-01-03
+14,Iran,true,true,5,2010-01-04,2010-01-04
+15,Saudi Arabia,true,true,5,2010-01-06,2010-01-06
+16,Haiti,true,true,3,2010-01-06,2010-01-06
+17,Zambia,true,true,7,2010-01-06,2010-01-06
+18,Belarus,true,true,4,2010-01-06,2010-01-06
+19,Cambodia,true,true,1,2010-01-07,2010-01-07
+20,Greenland,true,true,6,2010-01-07,2010-01-07
+21,The Bahamas,true,true,3,2010-01-08,2010-01-08
+22,Australia,true,true,2,2010-01-09,2010-01-09
+23,Italy,true,true,4,2010-01-10,2010-01-10
+24,Greece,true,true,4,2010-01-10,2010-01-10
+25,Syria,true,true,5,2010-01-11,2010-01-11
+26,Romania,true,true,4,2010-01-11,2010-01-11
+27,Cote d'Ivoire,true,true,7,2010-01-11,2010-01-11
+28,Portugal,true,true,4,2010-01-11,2010-01-11
+29,Central African Republic,true,true,7,2010-01-11,2010-01-11
+30,Serbia,true,true,4,2010-01-12,2010-01-12
+31,Jordan,true,true,5,2010-01-12,2010-01-12
+32,Bosnia and Herzegovina,true,true,4,2010-01-12,2010-01-12
+33,Kosovo,true,true,4,2010-01-13,2010-01-13
+34,Andorra,true,true,4,2010-01-13,2010-01-13
+35,Indonesia,true,true,1,2010-01-13,2010-01-13
+36,Egypt,true,true,5,2010-01-14,2010-01-14
+37,Sweden,true,true,4,2010-01-16,2010-01-16
+38,India,true,true,1,2010-01-16,2010-01-16
+39,Taiwan,true,true,1,2010-01-16,2010-01-16
+40,Equatorial Guinea,true,true,7,2010-01-17,2010-01-17
+41,Libya,true,true,5,2010-01-18,2010-01-18
+42,Guinea-Bissau,true,true,7,2010-01-18,2010-01-18
+43,Cyprus,true,true,4,2010-01-18,2010-01-18
+44,Pakistan,true,true,5,2010-01-18,2010-01-18
+45,Slovenia,true,true,4,2010-01-18,2010-01-18
+46,Mexico,true,true,6,2010-01-19,2010-01-19
+47,New Zealand,true,true,2,2010-01-20,2010-01-20
+48,Barbados,true,true,3,2010-01-21,2010-01-21
+49,Sudan,true,true,7,2010-01-21,2010-01-21
+50,Papua New Guinea,true,true,2,2010-01-22,2010-01-22
+51,Yemen,true,true,5,2010-01-22,2010-01-22
+52,Vanuatu,true,true,2,2010-01-23,2010-01-23
+53,Palau,true,true,2,2010-01-24,2010-01-24
+54,Bulgaria,true,true,4,2010-01-26,2010-01-26
+55,Seychelles,true,true,7,2010-01-29,2010-01-29
+56,Niger,true,true,7,2010-01-29,2010-01-29
+57,Somalia,true,true,5,2010-01-29,2010-01-29
+58,Switzerland,true,true,4,2010-01-30,2010-01-30
+59,Honduras,true,true,3,2010-01-30,2010-01-30
+60,Cameroon,true,true,7,2010-01-31,2010-01-31
+61,Nauru,true,true,2,2010-02-01,2010-02-01
+62,Singapore,true,true,1,2010-02-01,2010-02-01
+63,South Africa,true,true,7,2010-02-02,2010-02-02
+64,Jamaica,true,true,3,2010-02-02,2010-02-02
+65,Uzbekistan,true,true,1,2010-02-03,2010-02-03
+66,Malta,true,true,4,2010-02-03,2010-02-03
+67,South Korea,true,true,1,2010-02-04,2010-02-04
+68,Liberia,true,true,7,2010-02-05,2010-02-05
+69,Bahrain,true,true,5,2010-02-05,2010-02-05
+70,Antigua and Barbuda,true,true,3,2010-02-06,2010-02-06
+71,Panama,true,true,3,2010-02-06,2010-02-06
+72,Botswana,true,true,7,2010-02-06,2010-02-06
+73,Nigeria,true,true,7,2010-02-10,2010-02-10
+74,Nicaragua,true,true,3,2010-02-11,2010-02-11
+75,Georgia,true,true,4,2010-02-11,2010-02-11
+76,South Sudan,true,true,7,2010-02-11,2010-02-11
+77,Saint Lucia,true,true,3,2010-02-12,2010-02-12
+78,Uganda,true,true,7,2010-02-13,2010-02-13
+79,Luxembourg,true,true,4,2010-02-13,2010-02-13
+80,Togo,true,true,7,2010-02-14,2010-02-14
+81,Maldives,true,true,1,2010-02-15,2010-02-15
+82,Ghana,true,true,7,2010-02-15,2010-02-15
+83,Saint Kitts and Nevis,true,true,3,2010-02-15,2010-02-15
+84,Czech Republic,true,true,4,2010-02-16,2010-02-16
+85,Turkmenistan,true,true,1,2010-02-16,2010-02-16
+86,Solomon Islands,true,true,2,2010-02-17,2010-02-17
+87,Kuwait,true,true,5,2010-02-17,2010-02-17
+88,Germany,true,true,4,2010-02-19,2010-02-19
+89,Philippines,true,true,1,2010-02-19,2010-02-19
+90,Lithuania,true,true,4,2010-02-20,2010-02-20
+91,Slovakia,true,true,4,2010-02-20,2010-02-20
+92,Burkina Faso,true,true,7,2010-02-21,2010-02-21
+93,Algeria,true,true,5,2010-02-24,2010-02-24
+94,Austria,true,true,4,2010-02-25,2010-02-25
+95,Kyrgyzstan,true,true,1,2010-02-26,2010-02-26
+96,Sao Tome and Principe,true,true,7,2010-02-26,2010-02-26
+97,Samoa,true,true,2,2010-03-01,2010-03-01
+98,Dominica,true,true,3,2010-03-01,2010-03-01
+99,Kiribati,true,true,2,2010-03-02,2010-03-02
+100,Democratic Republic of the Congo,true,true,7,2010-03-03,2010-03-03
+101,Netherlands,true,true,4,2010-03-04,2010-03-04
+102,Iraq,true,true,5,2010-03-06,2010-03-06
+103,Tonga,true,true,2,2010-03-07,2010-03-07
+104,Cape Verde,true,true,7,2010-03-10,2010-03-10
+105,North Korea,true,true,1,2010-03-12,2010-03-12
+106,Madagascar,true,true,7,2010-03-12,2010-03-12
+107,Sri Lanka,true,true,1,2010-03-17,2010-03-17
+108,Norway,true,true,4,2010-03-20,2010-03-20
+109,East Timor,true,true,2,2010-03-21,2010-03-21
+110,Kenya,true,true,7,2010-03-23,2010-03-23
+111,Swaziland,true,true,7,2010-03-24,2010-03-24
+112,United Arab Emirates,true,true,5,2010-03-27,2010-03-27
+113,Oman,true,true,5,2010-03-30,2010-03-30
+114,Turkey,true,true,5,2010-03-31,2010-03-31
+115,Costa Rica,true,true,3,2010-04-05,2010-04-05
+116,Comoros,true,true,7,2010-04-06,2010-04-06
+117,Trinidad and Tobago,true,true,3,2010-04-07,2010-04-07
+118,Finland,true,true,4,2010-04-10,2010-04-10
+119,Canada,true,true,6,2010-04-10,2010-04-10
+120,Gabon,true,true,7,2010-04-12,2010-04-12
+121,Mauritius,true,true,7,2010-04-15,2010-04-15
+122,Chad,true,true,7,2010-04-16,2010-04-16
+123,Guinea,true,true,7,2010-04-17,2010-04-17
+124,Mauritania,true,true,7,2010-04-25,2010-04-25
+125,Angola,true,true,7,2010-04-28,2010-04-28
+126,Tunisia,true,true,5,2010-04-30,2010-04-30
+127,Moldova,true,true,4,2010-05-01,2010-05-01
+128,Tajikistan,true,true,1,2010-05-05,2010-05-05
+129,Guatemala,true,true,3,2010-05-07,2010-05-07
+130,Tuvalu,true,true,2,2010-05-10,2010-05-10
+131,United States of America,true,true,6,2010-05-12,2010-05-12
+132,Burundi,true,true,7,2010-05-13,2010-05-13
+133,Malawi,true,true,7,2010-05-16,2010-05-16
+134,Denmark,true,true,4,2010-05-16,2010-05-16
+135,Republic of the Congo,true,true,7,2010-05-17,2010-05-17
+136,Belize,true,true,3,2010-05-17,2010-05-17
+137,San Marino,true,true,4,2010-05-27,2010-05-27
+138,Ireland,true,true,4,2010-05-30,2010-05-30
+139,Latvia,true,true,4,2010-05-31,2010-05-31
+140,Montenegro,true,true,4,2010-06-06,2010-06-06
+141,Japan,true,true,1,2010-06-06,2010-06-06
+142,Cuba,true,true,3,2010-06-07,2010-06-07
+143,Kazakhstan,true,true,1,2010-06-08,2010-06-08
+144,Croatia,true,true,4,2010-06-09,2010-06-09
+145,Iceland,true,true,4,2010-06-15,2010-06-15
+146,Nepal,true,true,1,2010-06-16,2010-06-16
+147,France,true,true,4,2010-06-20,2010-06-20
+148,Ethiopia,true,true,7,2010-06-22,2010-06-22
+149,China,true,true,1,2010-06-26,2010-06-26
+150,Azerbaijan,true,true,5,2010-06-30,2010-06-30
+151,Namibia,true,true,7,2010-06-30,2010-06-30
+152,Marshall Islands,true,true,2,2010-06-30,2010-06-30
+153,Russia,true,true,4,2010-07-09,2010-07-09
+154,Vietnam,true,true,1,2010-07-13,2010-07-13
+155,Ukraine,true,true,4,2010-07-16,2010-07-16
+156,Thailand,true,true,1,2010-08-04,2010-08-04
+157,Fiji,true,true,2,2010-08-11,2010-08-11
+158,Myanmar,true,true,1,2010-08-11,2010-08-11
+159,Mozambique,true,true,7,2010-08-14,2010-08-14
+160,Spain,true,true,4,2010-08-14,2010-08-14
+161,Zimbabwe,true,true,7,2010-08-20,2010-08-20
+162,Djibouti,true,true,7,2010-08-22,2010-08-22
+163,Albania,true,true,4,2010-08-23,2010-08-23
+164,Estonia,true,true,4,2010-08-25,2010-08-25
+165,Laos,true,true,1,2010-08-28,2010-08-28
+166,Eritrea,true,true,7,2010-08-31,2010-08-31
+167,Macedonia,true,true,4,2010-09-01,2010-09-01
+168,The Gambia,true,true,7,2010-09-02,2010-09-02
+169,United Kingdom,true,true,4,2010-09-03,2010-09-03
+170,Federated States of Micronesia,true,true,2,2010-09-06,2010-09-06
+171,Monaco,true,true,4,2010-09-27,2010-09-27
+172,Poland,true,true,4,2010-10-01,2010-10-01
+173,Grenada,true,true,3,2010-10-06,2010-10-06
+174,Senegal,true,true,7,2010-10-19,2010-10-19
+175,Bangladesh,true,true,1,2010-10-19,2010-10-19
+176,Tanzania,true,true,7,2010-10-26,2010-10-26
+177,Saint Vincent and the Grenadines,true,true,3,2010-11-05,2010-11-05
+178,Morocco,true,true,5,2010-11-08,2010-11-08
+179,Bhutan,true,true,1,2010-11-17,2010-11-17
+180,Belgium,true,true,4,2010-11-22,2010-11-22
+181,Qatar,true,true,5,2011-01-06,2011-01-06
+182,Mongolia,true,true,1,2011-01-09,2011-01-09
+183,Rwanda,true,true,7,2011-01-14,2011-01-14
+184,Afghanistan,true,true,5,2011-02-04,2011-02-04
+185,Vatican City,true,true,4,2011-02-13,2011-02-13

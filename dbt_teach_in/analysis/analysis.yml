@@ -1,0 +1,5 @@
+version: 2
+
+analyses:
+  - name: tracing_units_sold_error
+    description: '{{ doc("tracing_units_sold_error") }}'

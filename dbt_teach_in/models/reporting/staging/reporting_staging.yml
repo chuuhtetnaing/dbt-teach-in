@@ -1,0 +1,39 @@
+version: 2
+
+##############################################
+## Defining some anchor labels to stay DRY. ##
+##############################################
+
+test__boolean_true_only: &test__boolean_true_only
+  tests:
+    - not_null
+    - accepted_values:
+        values:
+          - true
+
+##########################
+## The actual models... ##
+##########################
+models:
+  - name: stg_orders__calc_check
+    description: |
+      A simple view use to visualy check the reports v.s. calculated:
+        - Revenue
+        - Cost
+        - Profit
+
+      Schema test is executed on the Boolean column and throws error if
+      any calculation is off!
+
+    columns:
+      - name: same_reveue
+        description: ""
+        <<: *test__boolean_true_only
+
+      - name: same_cost
+        description: ""
+        <<: *test__boolean_true_only
+
+      - name: same_profit
+        description: ""
+        <<: *test__boolean_true_only
