@@ -1,0 +1,27 @@
+version: 2
+
+##########################
+## The actual seeds... ##
+##########################
+seeds:
+  - name: orders
+    description: >
+      The order table of all products across all countries
+
+    columns:
+      - name: id
+        description: n/a
+        tests:
+          - unique
+
+  - name: countries
+  - name: item_types
+  - name: regions
+
+  - name: orders_snapshot_backup
+    description: |
+      A valid mock up of the Snapshot table that would be
+      created by running `dbt snapshots`.
+
+      *Note: Table renamed with sufiix `_backup` in order to not
+      clash with the existing `/snapshots/orders_snapshot.sql` file*
