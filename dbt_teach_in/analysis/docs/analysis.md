@@ -4,7 +4,7 @@
 ---
 Using Snapshot table to see the before vs after as fix 
 
-![UsingSnapshots](/assets/Using_Snapshots.png)
+![UsingSnapshots](assets/Using_Snapshots.png)
 
 ## SQL Query used
 > _Note: did not bother optimising :P_
