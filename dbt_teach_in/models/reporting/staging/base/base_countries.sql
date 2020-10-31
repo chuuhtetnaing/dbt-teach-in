@@ -7,7 +7,7 @@
 
 with countries as (
 
-    select * from {{ ref('countries') }}
+    select * from {{ ref('raw_countries') }}
 
 )
 

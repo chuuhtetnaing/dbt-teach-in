@@ -1,13 +1,13 @@
 {{
     config(
-        materialized='ephemeral',
+        materialized='view',
     )
 }}
 
 
 with item_types as (
 
-    select * from {{ ref('item_types') }}
+    select * from {{ ref('raw_item_types') }}
 
 )
 

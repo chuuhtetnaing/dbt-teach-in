@@ -5,7 +5,7 @@
     config(
         materialized='table',
         post_hook=[
-            "{{ create_table_loop( this.schema , this.name ) }}",
+            "{{ crazy_create_table_loop( this.schema , this.name ) }}",
         ],
     )
 }}

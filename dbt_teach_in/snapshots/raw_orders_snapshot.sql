@@ -1,4 +1,4 @@
-{% snapshot orders_snapshot %}
+{% snapshot raw_orders_snapshot %}
 
 {{
     config(
@@ -11,11 +11,11 @@
     )
 }}
 
-select * from {{ ref('orders') }}
+select * from {{ ref('raw_orders') }}
 {#--
 
     -- Alternative referencing via source:
-    -- select * from {{ source('dbt_seeds', 'orders') }}
+    -- select * from {{ source('dbt_seeds', 'raw_orders') }}
 
 -#}
 
