@@ -14,6 +14,9 @@ dbt_ Teach-in
 A repo with examples for a more advance dbt_ teach-in session
  - Introduces more advance dbt_ feature and usage
 
+**VIDEO TO BE UPLOADED. TUNE-IN AGAIN SOON**
+
+
 ## Contents
 -----------
  - [Quick Links](#quick-links)
@@ -438,6 +441,7 @@ There are multiple type of Hooks & Operations dbt can run, see the [official dbt
     
 1. Formatting [Reference](https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/)
 
+
 ### Redshift Configurations
 > _Official dbt\_ docs:_
 >   - [Redshift Configurations](https://docs.getdbt.com/reference/resource-configs/redshift-configs/)
@@ -458,6 +462,8 @@ There are multiple type of Hooks & Operations dbt can run, see the [official dbt
             )
         "}}}}
         ```
+
+
 ### Best Practices
 - [Official docs](https://docs.getdbt.com/docs/guides/best-practices)
 - [dbt References](https://docs.getdbt.com/reference/dbt_project.yml)
