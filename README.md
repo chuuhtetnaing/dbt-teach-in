@@ -8,20 +8,35 @@ dbt_ Teach-in
 [![Website](https://img.shields.io/website?label=dbt%20documentation%20website&url=https%3A%2F%2F1bk.github.io%2Fdbt-teach-in%2F)][1]
 ![GitHub](https://img.shields.io/github/license/1bk/dbt-teach-in)
 
+
+## Introduction
+---------------
+A repo with examples for a more advance dbt_ teach-in session
+ - Introduces more advance dbt_ feature and usage
+
 ## Contents
 -----------
+ - [Quick Links](#quick-links)
+ - [Requirements](#requirements)
+ - [Initial Setup](#initial-setup)
+ - [Topics](#topics)
+    - [Seed](#seed)
+    - [Testing](#testing)
+    - [Snapshots](#snapshots)
+    - [Analyses](#analyses)
+    - [Macros](#macros)
+    - [Jinja](#jinja)
+    - [Hooks](#hooks)
+    - [Documentation](#documentation)
+    - [Redshift Configuration](#redshift-configuration)
+    - [Best Practices](#best-practices)
+
 
 ## Quick Links
 --------------
 Check out the [dbt_ documentation][1] website for this repo!
 
-
 [1]:dbt_teach_in/docs/
-
-
-## Introduction
----------------
-A repo with examples for a more advance dbt_ teach-in session
 
 
 ## Requirements
@@ -38,15 +53,33 @@ A repo with examples for a more advance dbt_ teach-in session
     
 4. dbt_  
 
+5. For other Python modules (if any), see:
+    - [`requirements.txt`](requirements.txt)
 
 ## Initial Setup
 --------
 1. Prepare the Database
-    - If you are using the Analytics Redshift, make sure to set the [`profile.yml`
-      in the dbt project](dbt_teach_in/profiles.yml) accordingly.
-    - To run a local Postgres database instance, you will need to:
+    - If you are using the Analytics Redshift, make sure to 
+        - Set the [`profile.yml` in the dbt project](dbt_teach_in/profiles.yml) accordingly.
+            - Set your `user` 
+            - Set your `schema` 
+            - Change the `target` to `redshift`
+        - Export your password to the environment variable:
+            ```bash
+            export PASS='<your_password_here>'
+            ```
+            
+    - If you want to run a local Postgres database instance, you will need to:
         - [Install Docker](https://docs.docker.com/docker-for-mac/install/)
-        - tbc
+        - Docker pull and run a local Postgres instance
+            ```bash
+            docker run --rm --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 postgres
+            ```
+          _Tips: add `-v $HOME/docker/volumes/postgres:/var/lib/postgresql/data` to persist the database._
+        - To stop the database when done, run:
+            ```bash
+            docker stop pg-docker
+            ```
 
 2. Installing Python
     - Follow the [guides to install Python][install-py-guide] if you don't 
@@ -172,26 +205,187 @@ Note:
 >   - [Seed properties](https://docs.getdbt.com/reference/seed-properties)
 >   - [`seed` command](https://docs.getdbt.com/reference/commands/seed)
 
-1. Setting schema tests 
-    - create  
+1. Schema Tests 
+    1. Creating simple schema tests:
+        - In the properties (e.g. `schema.yml` files), add `tests:`
+        - For example, in [`/data/seeds.yml`](dbt_teach_in/data/seeds.yml) _(Yes, you can do it for seeds file)_:
+            ```yaml
+            seeds:
+              - name: raw_orders
+                description: ...
+                columns:
+                  - name: id
+                    description: Integer ID of an order entry in this table.
+                    tests:
+                      - unique
+                      - not_null
+          
+                  - name: order_priority
+                    tests:
+                      - accepted_values:
+                          values: ["C", "H", "M", "L"]
+          
+                  ...
+            ```
+    1. Creating `relationships` tests between tables:
+        - In the properties (e.g. `schema.yml` files), add `tests:`
+        - For example, in [`/data/seeds.yml`](dbt_teach_in/data/seeds.yml):
+            ```yaml
+            seeds:
+              - name: raw_orders
+                description: ...
+                columns:
+                  ... 
+          
+                  - name: country_id
+                    description: Integer ID of a country entry in the `raw_countries` table.
+                    tests:
+                      - relationships:
+                          to: ref('raw_countries')
+                          field: id
+            
+                  - name: item_type_id
+                    description: Integer ID of an item type entry in the `raw_item_types` table.
+                    tests:
+                      - relationships:
+                          to: ref('raw_item_types')
+                          field: id
+            ```
 
+    1. Reusing tests using **anchors** in `yaml`:
+        - For example, in [`/models/reporting/staging/reporting_staging.yml.yml`](dbt_teach_in/models/reporting/staging/reporting_staging.yml):
+        - Define an anchor:
+            ```yaml
+            ##############################################
+            ## Defining some anchor labels to stay DRY. ##
+            ##############################################
+            
+            test__boolean_true_only: &test__boolean_true_only
+              tests:
+                - not_null
+                - accepted_values:
+                    values:
+                      - true
+            ```
+        - Using the anchor:
+            ```yaml
+            models:
+              - name: stg_orders__calc_check
+                description: |
+                  A simple view use to visualy check the reports v.s. calculated:
+                    - Revenue
+                    - Cost
+                    - Profit
+            
+                  Schema test is executed on the Boolean column and throws error if
+                  any calculation is off!
+            
+                columns:
+                  - name: same_reveue
+                    description: ""
+                    <<: *test__boolean_true_only
+            
+                  - name: same_cost
+                    description: ""
+                    <<: *test__boolean_true_only
+            
+                  - name: same_profit
+                    description: ""
+                    <<: *test__boolean_true_only
+            ```
+
+    1. But note that Schema test only show if a test `PASS` or `FAILS`. To get the number of rows that
+       fails a particular tests, you can use [Data Test](https://docs.getdbt.com/docs/building-a-dbt-project/tests/#data-tests) instead.
+
+1. Data Tests
+    1. Creating simple data test:
+        - Create a query that would return rows for a specific conditions (in the `WHERE` clause). 
+        - *If rows are returned, then the test will fail* and return an `ERROR` (default) or `WARN` (see below) 
+        - Save the query in the [`/tests` directory](dbt_teach_in/tests)
+        - See example [`test_stg_orders__calc_check.sql`](dbt_teach_in/tests/test_stg_orders__calc_check.sql)
+    
+    1. Defining custom config for each test:
+        - By default, a test is `enabled` and the `severity` is **error**.
+        - To overwrite this, define [custom config](https://docs.getdbt.com/reference/data-test-configs) in the test's `.sql` files:
+            ```yaml
+            {{ "{{
+                config(
+                    enabled=true | false,
+                    severity='warn' | 'error'
+                )
+            " }}}}
+            ```
+        - See example [`test_stg_orders__calc_check.sql`](dbt_teach_in/tests/test_stg_orders__calc_check.sql)
+
+    
 ### Snapshots
 
-### Analysis
+Use snapshot to track changes to a table overtime. 
+You can also use it to view a snapshot of the table at a specific period in time. 
 
-### Hooks
+1. Create a snapshot
+    1. Follow the [official dbt guide](https://docs.getdbt.com/docs/building-a-dbt-project/snapshots/)
+    1. For example, see [`/snapshots/raw_orders_snapshot.sql`](dbt_teach_in/snapshots/raw_orders_snapshot.sql)
 
-### Documentation
+2. To revisit the table at a specific period in time
+    1. In our example, there was an error in the "units_sold" in the `raw_orders` table where the number was
+       doubled in the month of June 2017.
+    1. We use a custom query to put ourselves at the point in time before or after the fix
+       was executed (i.e. the fix was on '2017-07-01').
+    1. For the custom query, see [`/analysis/tracing_units_sold_error.sql`](dbt_teach_in/analysis/tracing_units_sold_error.sql)
+    1. [Documentation of the Query](dbt_teach_in/docs/#!/analysis/analysis.dbt_teach_in.tracing_units_sold_error)
+    
+### Analyses
+> _Teach-in file reference:_
+>   - [Documentation in `/analysis/analysis.yml`](dbt_teach_in/analysis/analysis.yml)
+>   - [Documentation Docs in `/analysis/docs/analysis.md`](dbt_teach_in/analysis/docs/analysis.md)
+> 
+> _Teach-in dbt\_ documentation reference:_
+>   - [Analysis Documentation](dbt_teach_in/docs/#!/analysis/analysis.dbt_teach_in.tracing_units_sold_error)
+> 
+> _Official dbt\_ docs:_
+>   - [Analyses](https://docs.getdbt.com/docs/building-a-dbt-project/analyses/)
 
-### Jinja
+Basically, if you have a "analytical" queries that you want to version control and also run using dbt 
+but *not materialise* the table, then you can dump them in the `/analysis` directory.
+
+1. Remember, anything in the `/analysis` directory will not run when you execute `dbt run`. 
+   Instead, it will only be compiled.
+1. Compiling turns the queries in the `.sql` files to runnable sql you can copy & paste into 
+   your SQL clients or Sisense (Periscope)
+1. To compile manually, just run `dbt compile`.
 
 ### Macros
 
+### Hooks
+There are multiple type of Hooks & Operations dbt can run, 
 
-### Redshift Connections
+### Jinja
+[Using Jinja](https://docs.getdbt.com/tutorial/using-jinja/)
+
+1. 
+
+### Documentation
+1. Formatting [YAML Multiline Strings](https://yaml-multiline.info/) in descriptions with “\>”, “\|”, etc. 
+
+1. Using and linking to markdown files with `{{ "{% docs <name_of_doc> " }}%}`
+    - For example declaration, see [`/analysis/docs/analysis.md`](dbt_teach_in/analysis/docs/analysis.md)
+    - For example implementation, see [`/analysis/analysis.yml`](dbt_teach_in/analysis/analysis.yml):
+        ```yaml
+        analyses:
+          - name: <name_of_sql>
+            description: '{{ "{{ doc(''<name_of_doc>'') " }}}}'
+        ```
+    - Note: can be used for `seeds`, `analyses`, or `models` too.
+        
+1. Adding Images or Hyperlinks
+    
+1. Formatting [Reference](https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/)
+
+### Redshift Configuration
 
 ### Best Practices
-
+- [Official docs](https://docs.getdbt.com/docs/guides/best-practices)
 
 
 [install-py-guide]: https://realpython.com/installing-python/#how-to-install-python-on-macos

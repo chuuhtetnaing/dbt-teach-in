@@ -9,4 +9,13 @@ dbt_teach_in:
       pass: docker
       dbname: postgres
       schema: dbt
+    redshift:
+      type: redshift
+      threads: 8
+      host: redshift-nc.moneylion.com
+      port: 5439
+      user: blee
+      pass: "{{ env_var('PASS') }}"
+      dbname: mlsegment
+      schema: usr_blee
   target: dev

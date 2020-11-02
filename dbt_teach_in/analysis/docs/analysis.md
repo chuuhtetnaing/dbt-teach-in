@@ -2,11 +2,11 @@
 
 # Example Snapshots Use Case
 ---
-Using Snapshot table to see the before vs after as fix 
+Using Snapshot table to see the before vs after a fix 
 
 ![using_snapshots](assets/using_snapshots.png)
 
-## SQL Query used
+## SQL Query used for the Chart above
 > _Note: did not bother optimising :P_
 
 ```
@@ -15,7 +15,7 @@ with base_before as (
     
     select row_number() over (partition by id order by dbt_valid_from desc) as rn,
            *
-    from dbt_snapshots.orders_snapshot_backup
+    from dbt_snapshots.raw_orders_snapshot_backup
     
     -- Before the fix, will be high
     where dbt_valid_from < '2017-07-01'
@@ -40,7 +40,7 @@ with base_before as (
 , base_after as (
     select row_number() over (partition by id order by dbt_valid_from desc) as rn,
            *
-    from dbt_snapshots.orders_snapshot_backup
+    from dbt_snapshots.raw_orders_snapshot_backup
 
     -- After the fix, should be lower
     where dbt_valid_from <= '2017-07-01'

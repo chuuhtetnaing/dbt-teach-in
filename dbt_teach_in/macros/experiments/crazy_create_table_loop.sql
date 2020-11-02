@@ -26,12 +26,12 @@ Returns:
     {% for item_type in item_types_list -%}
         {#-- Extra indentation so it appears inline when script is compiled. -#}
         drop table if exists {{ this.schema }}.{{ this.name }}__{{ item_type.replace(" ", "_") }}_only
-        {{ var("colon") }}
+        {{ var("semicolon") }}
 
         create table {{ schema }}.{{ table }}__{{ item_type.replace(" ", "_") }}_only as (
             select * from {{ schema }}.{{ table }} where item_type = '{{ item_type }}'
         )
-        {{ var("colon") }}
+        {{ var("semicolon") }}
 
     {%- endfor %}
 

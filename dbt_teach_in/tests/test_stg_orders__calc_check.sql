@@ -1,7 +1,17 @@
 {#
-    -- This test basically checks if the given values and the derived values are the same or not
+    -- This test basically checks if the given revenue/costs/profit values and the derived
+    -- values are the same or not.
     -- If they are not the same (i.e. `false`), then return the rows and fail the test!
 -#}
+
+{{
+    config(
+        enabled=true,
+        severity='warn'
+    )
+}}
+
+
 {% set this_bool = "false" -%}
 
 with stg_orders__calc_check as (

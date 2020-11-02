@@ -13,7 +13,7 @@
 with base as (
     select row_number() over (partition by id order by dbt_valid_from desc) as rn,
            *
-    from dbt_snapshots.orders_snapshot_backup
+    from dbt_snapshots.raw_orders_snapshot_backup
 
     -- [Comment/uncomment either one]
 

@@ -41,7 +41,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 vars:
   dbt_teach_in:
-    colon: ";"
+    semicolon: ";"
 
 
 models:
@@ -50,7 +50,7 @@ models:
     +bind: false
 
     reporting:
-  #    schema: reporting
+      schema: reporting       # Comment out if using Redshift
       +tags: ["reporting"]
 
       core:
@@ -73,16 +73,16 @@ models:
             - "ephemeral"
 
     experiments:
-      +schema: experiments
+      +schema: experiments    # Comment out if using Redshift
 
 sources:
   dbt_teach_in:
-    dbt_seeds:
+    mock_seeds_schema:
       +enable: false
 
 seeds:
   dbt_teach_in:
-    +schema: seeds
+    +schema: seeds            # Comment out if using Redshift
     +quote_columns: true
 
     raw_orders:
@@ -93,7 +93,7 @@ seeds:
 
 
     snapshots:
-      +schema: snapshots
+      +schema: snapshots      # Comment out if using Redshift
 
       raw_orders_snapshot_backup:
         +enabled: false

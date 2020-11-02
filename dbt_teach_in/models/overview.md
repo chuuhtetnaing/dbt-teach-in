@@ -1,7 +1,7 @@
 {% docs __overview__ %}
 # dbt_ Teach-in
 ---
-
+Return to [write-up](/dbt-teach-in/)
 
 
 # Sample Data: Relationship
