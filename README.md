@@ -21,14 +21,14 @@ A repo with examples for a more advance dbt_ teach-in session
  - [Initial Setup](#initial-setup)
  - [Topics](#topics)
     - [Seed](#seed)
-    - [Testing](#testing)
+    - [Test](#tests)
     - [Snapshots](#snapshots)
     - [Analyses](#analyses)
     - [Macros](#macros)
     - [Jinja](#jinja)
     - [Hooks](#hooks)
     - [Documentation](#documentation)
-    - [Redshift Configuration](#redshift-configuration)
+    - [Redshift Configurations](#redshift-configurations)
     - [Best Practices](#best-practices)
 
 
@@ -191,19 +191,9 @@ Note:
         dbt seed --profiles-dir ./ --select raw_orders_snapshot_backup 
         ``` 
 
-### Testing
-> _Teach-in file reference:_
->   - [Raw data in `/data`](dbt_teach_in/data)
->   - [Documentation in `/data/seeds.yml`](dbt_teach_in/data/seeds.yml)
-> 
-> _Teach-in dbt\_ documentation reference:_
->   - [Table Documentation](dbt_teach_in/docs/#!/seed/seed.dbt_teach_in.raw_countries)
-> 
+### Tests
 > _Official dbt\_ docs:_
->   - [Seed -- Getting Started](https://docs.getdbt.com/docs/building-a-dbt-project/seeds/)
->   - [Seed configurations](https://docs.getdbt.com/reference/seed-configs)
->   - [Seed properties](https://docs.getdbt.com/reference/seed-properties)
->   - [`seed` command](https://docs.getdbt.com/reference/commands/seed)
+>   - [Tests](https://docs.getdbt.com/docs/building-a-dbt-project/tests/)
 
 1. Schema Tests 
     1. Creating simple schema tests:
@@ -355,17 +345,83 @@ but *not materialise* the table, then you can dump them in the `/analysis` direc
    your SQL clients or Sisense (Periscope)
 1. To compile manually, just run `dbt compile`.
 
-### Macros
+### Jinja
+> _Official dbt\_ docs:_
+>   - [Using Jinja](https://docs.getdbt.com/tutorial/using-jinja/)
+
+1. Setting variables in `dbt_project.yml`:
+    - A simple example is to set the variable name `test_name` to `Bob`:   
+        ```yaml
+        vars:
+          dbt_teach_in:
+            test_name: "Bob"
+        ```
+    - This variable is available project wide.
+    
+1. Setting variables within `.sql` scripts
+    - A simple example is to set the variable name `test_name` to `Bob`:   
+        ```sql
+        {{ " {% set test_name = 'Bob' "}}%}
+        ```
+    - This variable is available only in this script.
+    - We can even use Python modules within this jinja contexts:  
+        - Here we set the variable called `now` to the python module datetime  
+            ```sql
+            {{ " {% set now = modules.datetime.datetime.now() "}}%}
+            ```
+        - This example is implemented in [`models/experiments/crazy_experiment.sql`](dbt_teach_in/models/experiments/crazy_experiment.sql)
+    
+1. Calling variables within `.sql` scripts.
+    - Simply use the doubt curly brackets in `.sql` files, like this:
+        ```sql
+        {{ " {{ test_name "}}}}
+        ```
+    - For variables assign python modules, you can call its sub method, liek this:
+        ```sql
+        {{ " {{ now.minute "}}}}
+        ```
+
+1. Note that `ref` and `source` used are macros called using the jinja:
+    - e.g.
+        ```sql
+        with source_table_name as (
+        
+            select * from {{ " {{ source('schema_name', 'table_name') "}}}}
+        
+        )
+      
+        , model_name as (
+        
+            select * from {{ " {{ ref('model_name') "}}}}
+        
+        )
+        ```
 
 ### Hooks
-There are multiple type of Hooks & Operations dbt can run, 
+There are multiple type of Hooks & Operations dbt can run, see the [official dbt documentation](https://docs.getdbt.com/docs/building-a-dbt-project/hooks-operations/)
 
-### Jinja
-[Using Jinja](https://docs.getdbt.com/tutorial/using-jinja/)
-
-1. 
+1. Run Post-Hooks (i.e. after model is materialised)
+    - Example:
+        ```sql
+        {{ " {{  
+            config(
+                materialized='table',
+                post_hook=[ 
+                  'drop table if exists dbt_experiment.crazy_experiment_fruit_only',
+                  'create table dbt_experiment.crazy_experiment_fruit_only as (select * from dbt_experiment.crazy_experiment where item_type = ''Fruits'')',
+                ]
+            ) 
+        "}}}}
+        ```
+ 
+### Macros
+> _Official dbt\_ docs:_
+>   - [Macros](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros#macros)
 
 ### Documentation
+> _Official dbt\_ docs:_
+>   - [Documentation](https://docs.getdbt.com/docs/building-a-dbt-project/documentation/)
+
 1. Formatting [YAML Multiline Strings](https://yaml-multiline.info/) in descriptions with “\>”, “\|”, etc. 
 
 1. Using and linking to markdown files with `{{ "{% docs <name_of_doc> " }}%}`
@@ -382,10 +438,29 @@ There are multiple type of Hooks & Operations dbt can run,
     
 1. Formatting [Reference](https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/)
 
-### Redshift Configuration
+### Redshift Configurations
+> _Official dbt\_ docs:_
+>   - [Redshift Configurations](https://docs.getdbt.com/reference/resource-configs/redshift-configs/)
 
+1. Applying to the final `fct_` table
+    - For example declaration, see [`/models/reporting/core/fct_orders__dashboard.sql`](dbt_teach_in/models/reporting/core/fct_orders__dashboard.sql)
+        ```sql
+        -- In `config` here, `sort` and `dist` only works for Redshift and not for Postgres. 
+        {{ " {{ 
+            config(
+                materialized='table',
+                sort=[
+                    'item_type',
+                    'order_id',
+                    'order_ref_id',
+                ],
+                dist='order_id',
+            )
+        "}}}}
+        ```
 ### Best Practices
 - [Official docs](https://docs.getdbt.com/docs/guides/best-practices)
+- [dbt References](https://docs.getdbt.com/reference/dbt_project.yml)
 
 
 [install-py-guide]: https://realpython.com/installing-python/#how-to-install-python-on-macos
