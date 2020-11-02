@@ -1,3 +1,5 @@
+**VIDEO TO BE UPLOADED. TUNE-IN AGAIN SOON!**
+
 dbt_ Teach-in
 ============
 
@@ -14,7 +16,6 @@ dbt_ Teach-in
 A repo with examples for a more advance dbt_ teach-in session
  - Introduces more advance dbt_ feature and usage
 
-**VIDEO TO BE UPLOADED. TUNE-IN AGAIN SOON**
 
 
 ## Contents
