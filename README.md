@@ -1,5 +1,3 @@
-**VIDEO TO BE UPLOADED. TUNE-IN AGAIN SOON!**
-
 dbt_ Teach-in
 ============
 
@@ -16,6 +14,9 @@ dbt_ Teach-in
 A repo with examples for a more advance dbt_ teach-in session
  - Introduces more advance dbt_ feature and usage
 
+
+### Video Recording of Teach-in Session 
+[![dbt-teach-in-video](dbt_teach_in/assets/dbt-teach-in-video.png)][video-gdrive]
 
 
 ## Contents
@@ -466,10 +467,11 @@ There are multiple type of Hooks & Operations dbt can run, see the [official dbt
 
 
 ### Best Practices
-- [Official docs](https://docs.getdbt.com/docs/guides/best-practices)
-- [dbt References](https://docs.getdbt.com/reference/dbt_project.yml)
+- [Best Practices -- Official dbt docs](https://docs.getdbt.com/docs/guides/best-practices)
+- [Useful -- dbt References](https://docs.getdbt.com/reference/dbt_project.yml)
 
 
+[video-gdrive]: https://drive.google.com/file/d/16FBLSN2vsHQ989GWzlxbMAfH8EWVefjV/view?usp=sharing
 [install-py-guide]: https://realpython.com/installing-python/#how-to-install-python-on-macos
 [install-hb-guide]: https://github.com/git-guides/install-git#install-git-from-homebrew
 [install-dbt-guide]: https://docs.getdbt.com/dbt-cli/installation/#installation

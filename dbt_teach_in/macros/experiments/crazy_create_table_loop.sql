@@ -18,7 +18,7 @@ Returns:
     {#-- Extra indentation so it appears inline when script is compiled. -#}
     {%
         set item_types_list = dbt_utils.get_column_values(
-            table=ref('base_item_types'), column='item_type'
+            table=ref('raw_item_types'), column='item_type'
         )
     -%}
     
