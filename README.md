@@ -5,7 +5,7 @@ dbt_ Teach-in
 ![Python version](https://img.shields.io/badge/python-3.5%20%7C%203.6%20%7C%203.7-blue)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/1bk/dbt-teach-in)
 ![GitHub repo size](https://img.shields.io/github/repo-size/1bk/dbt-teach-in)
-[![Website](https://img.shields.io/website?label=dbt%20documentation%20website&url=https%3A%2F%2F1bk.github.io%2Fdbt-teach-in%2F)][1]
+[![Website](https://img.shields.io/website?label=dbt%20documentation%20website&url=https%3A%2F%2F1bk.github.io%2Fdbt-teach-in%2F)](https://1bk.dev/dc-dbt/)
 ![GitHub](https://img.shields.io/github/license/1bk/dbt-teach-in)
 
 
