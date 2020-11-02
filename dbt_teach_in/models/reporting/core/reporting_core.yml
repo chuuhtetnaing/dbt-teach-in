@@ -1,0 +1,17 @@
+version: 2
+
+
+##########################
+## The actual models... ##
+##########################
+models:
+  - name: fct_orders__dashboard
+    description: |
+      The fact table that joins all the raw seed tables
+
+
+  - name: fct_orders__countries_units_sold__fruits
+    description: |
+      The cross tabulation (matrix) of the relative units sold for `item_type = "Fruits"` between countries.
+
+      _Note the use of crosstab function in the SQL query._

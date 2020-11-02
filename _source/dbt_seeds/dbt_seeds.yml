@@ -13,11 +13,11 @@ test__id_generic: &test__id_generic
 ## The actual sources... ##
 ###########################
 sources:
-  - name: mock_schema
+  - name: mock_seeds_schema
     schema: dbt_seeds
     loader: DE - Airflow - Java
 
-    loaded_at_field: updateed_at
+    loaded_at_field: updated_at
 
     freshness:
       warn_after: {count: 730, period: day}
@@ -29,9 +29,9 @@ sources:
       identifier: false
 
     tables:
-      - name: seeds_orders
-        identifier: orders
-        description: n/a
+      - name: mock_raw_orders_table
+        identifier: raw_orders
+        description: This mocks the `raw_orders` in `dbt_seeds`
         columns:
           - name: id
             description: Id

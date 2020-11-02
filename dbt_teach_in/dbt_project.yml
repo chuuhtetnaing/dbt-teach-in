@@ -46,34 +46,34 @@ vars:
 
 models:
   dbt_teach_in:
-    materialized: view
-    bind: false
+    +materialized: view
+    +bind: false
 
     reporting:
   #    schema: reporting
-      tags: ["reporting"]
+      +tags: ["reporting"]
 
       core:
-        materialized: table
-        tags: ["core"]
+        +materialized: table
+        +tags: ["core"]
 
         intermediate:
-          materialized: view
-          tags: ["intermediate"]
+          +materialized: view
+          +tags: ["intermediate"]
 
       staging:
-        tags: ["staging"]
-        materialized: view
+        +tags: ["staging"]
+        +materialized: view
 
         base:
-          materialized: ephemeral
-          tags:
+          +materialized: ephemeral
+          +tags:
             - "base"
             - "cte"
             - "ephemeral"
 
     experiments:
-      schema: experiments
+      +schema: experiments
 
 sources:
   dbt_teach_in:
@@ -83,7 +83,7 @@ sources:
 seeds:
   dbt_teach_in:
     +schema: seeds
-    quote_columns: true
+    +quote_columns: true
 
     raw_orders:
       +enabled: true
