@@ -1,4 +1,3 @@
-
 dbt_ Teach-in
 ============
 
@@ -14,6 +13,7 @@ dbt_ Teach-in
 ---------------
 A repo with examples for a more advance dbt_ teach-in session
  - Introduces more advance dbt_ feature and usage
+
 
 ### Video Recording of Teach-in Session 
 [![dbt-teach-in-video](dbt_teach_in/assets/dbt-teach-in-video.png)][video-gdrive]
