@@ -1,6 +1,6 @@
-with dim_orders__dashboard as (
+with fct_orders__dashboard as (
 
-    select * from {{ ref('dim_orders__dashboard') }}
+    select * from {{ ref('fct_orders__dashboard') }}
 
 )
 
@@ -11,7 +11,7 @@ with dim_orders__dashboard as (
       , sum(units_sold)                               as units_sold
 
     from
-        dim_orders__dashboard
+        fct_orders__dashboard
 
     where
          item_type = 'Fruits'

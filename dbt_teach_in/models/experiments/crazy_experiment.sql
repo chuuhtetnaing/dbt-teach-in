@@ -12,9 +12,9 @@
 {# -- "drop table if exists {{ this.schema }}.{{ this.name }}_fruit_only", #}
 {# -- "create table {{ this.schema }}.{{ this.name}}_fruit_only as (select * from {{ this }} where item_type = 'Fruits')", #}
 
-with dim_orders__dashboard as (
+with fct_orders__dashboard as (
 
-    select * from {{ ref('dim_orders__dashboard') }}
+    select * from {{ ref('fct_orders__dashboard') }}
 
 )
 
@@ -28,7 +28,7 @@ with dim_orders__dashboard as (
         , total_profit * {{ now.minute }}   as exp_total_profit
 
     from
-        dim_orders__dashboard
+        fct_orders__dashboard
 
 )
 

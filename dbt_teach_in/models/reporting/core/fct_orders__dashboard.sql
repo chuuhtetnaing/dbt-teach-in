@@ -1,3 +1,17 @@
+{#-- In `config` here, `sort` and `dist` only works for Redshift and not for Postgres.  -#}
+{{
+    config(
+        materialized='table',
+        sort=[
+            'item_type',
+            'order_id',
+            'order_ref_id',
+        ],
+        dist='order_id',
+    )
+}}
+
+
 with base_regions as (
 
     select * from {{ ref('base_regions') }}

@@ -1,9 +1,0 @@
-version: 2
-
-
-sources:
-  - name: stg
-    schema: raw
-
-    tables:
-      - name: orders_actual

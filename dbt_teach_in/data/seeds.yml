@@ -5,23 +5,92 @@ version: 2
 ##########################
 seeds:
   - name: raw_orders
-    description: >
+    tags: ["seeds"]
+    description: |
       The order table of all products across all countries
+
+      ```
+      Preview:
+      ```
+      {{ doc("raw_orders__preview") }}
 
     columns:
       - name: id
-        description: n/a
+        description: Integer ID of an order entry in this table.
         tests:
           - unique
+          - not_null
+
+      - name: country_id
+        description: Integer ID of a country entry in the `raw_countries` table.
+        tests:
+          - relationships:
+              to: ref('raw_countries')
+              field: id
+
+      - name: item_type_id
+        description: Integer ID of an item type entry in the `raw_item_types` table.
+        tests:
+          - relationships:
+              to: ref('raw_item_types')
+              field: id
+
+      - name: order_priority
+        tests:
+          - accepted_values:
+              values: ["C", "H", "M", "L"]
+
+  - name: raw_item_types
+    tags: ["seeds"]
+    description: |
+      ```
+      Preview:
+      ```
+      {{ doc("raw_item_types__preview") }}
+
+    columns:
+      - name: item_type
+        tests:
+          - accepted_values:
+              values:
+                - Fruits
+                - Beverages
+                - Personal Care
+                - Clothes
+                - Snacks
+                - Vegetables
+                - Cereal
+                - Baby Food
+                - Meat
+                - Cosmetics
+                - Office Supplies
+                - Household
 
   - name: raw_countries
-  - name: raw_item_types
+    tags: ["seeds"]
+    description: |
+      ```
+      Preview:
+      ```
+      {{ doc("raw_countries__preview") }}
+
+
   - name: raw_regions
+    tags: ["seeds"]
+    description: |
+      ```
+      Preview:
+      ```
+      {{ doc("raw_regions__preview") }}
+
 
   - name: raw_orders_snapshot_backup
+    tags: ["seeds"]
     description: |
       A valid mock up of the Snapshot table that would be
       created by running `dbt snapshots`.
 
       *Note: Table renamed with sufiix `_backup` in order to not
       clash with the existing `/snapshots/orders_snapshot.sql` file*
+    docs:
+      show: true

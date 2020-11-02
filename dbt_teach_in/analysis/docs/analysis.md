@@ -4,12 +4,12 @@
 ---
 Using Snapshot table to see the before vs after as fix 
 
-![UsingSnapshots](assets/Using_Snapshots.png)
+![using_snapshots](assets/using_snapshots.png)
 
 ## SQL Query used
 > _Note: did not bother optimising :P_
 
-```postgresql
+```
 -- Tracing back to the state before the Error was fixed.
 with base_before as (
     
