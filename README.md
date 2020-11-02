@@ -11,11 +11,10 @@ dbt_ Teach-in
 
 ## Introduction
 ---------------
-A repo with examples for a more advance dbt_ teach-in session
- - Introduces more advance dbt_ feature and usage
+Introducing (and a refresher of) the more advance dbt_ features and usage. 
+This repo contains the examples used during the teach-in session. 
 
-
-### Video Recording of Teach-in Session 
+### Video Recording of the Teach-in Session 
 [![dbt-teach-in-video](dbt_teach_in/assets/dbt-teach-in-video.png)][video-gdrive]
 
 
@@ -39,9 +38,9 @@ A repo with examples for a more advance dbt_ teach-in session
 
 ## Quick Links
 --------------
-Check out the [dbt_ documentation][1] website for this repo!
-
-[1]:dbt_teach_in/docs/
+- The [dbt_ documentation](dbt_teach_in/docs/) website for this repo!
+- [dbt presentation for Data Council KL](https://1bk.dev/dc-dbt/)
+- [Data Engineering's Confluence page on dbt](https://moneylion.atlassian.net/wiki/spaces/DE/pages/1264287829/dbt)
 
 
 ## Requirements
