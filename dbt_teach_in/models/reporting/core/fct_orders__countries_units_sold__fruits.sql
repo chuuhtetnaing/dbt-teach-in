@@ -27,7 +27,7 @@ with final as (
                 {{ a_name }} ,
                 {{ b_name }} ,
                 units_sold_diff
-             from "{{ target.database }}"."{{ target.schema }}"."{{ stg_ref }}"
+             from "{{ target.database }}"."{{ this.schema }}"."{{ stg_ref }}"
             ',
             $$VALUES {{ get_b_name_value(stg_ref, b_name) }} $$
         ) as ct (
