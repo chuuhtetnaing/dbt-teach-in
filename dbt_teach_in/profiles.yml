@@ -12,7 +12,7 @@ dbt_teach_in:
     redshift:
       type: redshift
       threads: 8
-      host: redshift-nc.moneylion.com
+      host: "{{ env_var('REDSHIFT_HOST') }}"
       port: 5439
       user: blee
       pass: "{{ env_var('PASS') }}"
